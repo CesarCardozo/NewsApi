@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NewsApiService } from '../services/news-api.service';
+import { RespuestaTopHeadlines} from '../services/news-api.service'
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +9,21 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  respuestaTopHeadlines: RespuestaTopHeadlines;
+
+  constructor(private _ds: NewsApiService) {}
+
+  ngOnInit(){
+    this._ds.loadNewsByCat('general').subscribe(data => {
+      this.respuestaTopHeadlines = data;
+    })
+  }
+
+  loadNewsByCat(category){
+    console.log(category);
+    this._ds.loadNewsByCat(category).subscribe(data => {
+      this.respuestaTopHeadlines = data;
+    })
+  }
 
 }

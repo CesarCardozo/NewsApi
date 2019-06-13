@@ -8,16 +8,22 @@ import { environment } from 'src/environments/environment';
 
 export class NewsApiService {
 
-  
+
   constructor(public Http: HttpClient) {
   }
 
   loadNews() {
     return this.Http.get<RespuestaTopHeadlines>(
       "https://newsapi.org/v2/everything?q=bitcoin&from=2019-05-13&sortBy=publishedAt&apiKey="
-       + environment.apiKey);
+      + environment.apiKey);
   }
-  
+
+  loadNewsByCat(category) {
+    return this.Http.get<RespuestaTopHeadlines>(
+      "https://newsapi.org/v2/top-headlines?country=us&category="
+      + category + 
+      "&apiKey="+ environment.apiKey);
+  }
 }
 
 export interface RespuestaTopHeadlines {
