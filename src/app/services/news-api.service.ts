@@ -14,7 +14,7 @@ export class NewsApiService {
 
   loadNews() {
     return this.Http.get<RespuestaTopHeadlines>(
-      "https://newsapi.org/v2/everything?q=bitcoin&from=2019-05-13&sortBy=publishedAt&apiKey="
+      "https://newsapi.org/v2/everything?q=bitcoin&from=2019-06-17&sortBy=publishedAt&apiKey="
       + environment.apiKey);
   }
 
