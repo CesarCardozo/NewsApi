@@ -12,6 +12,8 @@ import { NewsApiService } from './services/news-api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NoticiaPageModule } from './noticia/noticia.module';
 import { NoticiaPage } from './noticia/noticia.page';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [NoticiaPage],
@@ -20,7 +22,8 @@ import { NoticiaPage } from './noticia/noticia.page';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    NewsApiService
+    NewsApiService,
+    InAppBrowser
   ],
   bootstrap: [AppComponent],
 })

@@ -7,7 +7,7 @@
         </ion-button>
       </div>
     </ion-card-subtitle>
-    <ion-card-title>{{new.title}}</ion-card-title>
+    <ion-card-title (click)="displayInAppBrowser(new)">{{new.title}}</ion-card-title>
     <ion-img [src]="new.urlToImage"></ion-img>
   </ion-card-header>
   <ion-card-content>{{new.description}}

@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { Article } from '../services/news-api.service';
 
 @Component({
   selector: 'app-noticia',
@@ -8,9 +10,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class NoticiaPage implements OnInit {
 
   @Input() new;
-  constructor() { }
+
+  constructor(private iab: InAppBrowser) { }
 
   ngOnInit() {
+  }
+
+  displayInAppBrowser(noticia:Article){
+    this.iab.create(noticia.url,'_blank');
   }
 
 }
