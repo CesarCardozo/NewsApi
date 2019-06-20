@@ -12,8 +12,7 @@ export class Tab1Page {
 
   respuestaTopHeadlines: RespuestaTopHeadlines;
 
-  constructor(private _ds: NewsApiService,
-    public actionSheetController: ActionSheetController) {
+  constructor(private _ds: NewsApiService) {
   }
 
   ngOnInit() {
@@ -21,32 +20,4 @@ export class Tab1Page {
       this.respuestaTopHeadlines = data;
     })
   }
-
-  async presentShareActionSheet() {
-    const actionSheet = await this.actionSheetController.create({
-      buttons: [
-        {
-          text: 'Share',
-          icon: 'share',
-          handler: () => {
-            console.log('Share clicked');
-          }
-        }, {
-          text: 'Favorite',
-          icon: 'heart',
-          handler: () => {
-            console.log('Favorite clicked');
-          }
-        }, {
-          text: 'Cancel',
-          icon: 'close',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        }]
-    });
-    await actionSheet.present();
-  }
-
 }
