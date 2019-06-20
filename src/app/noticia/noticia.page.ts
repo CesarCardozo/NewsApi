@@ -3,6 +3,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Article } from '../services/news-api.service';
 import { ActionSheetController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class NoticiaPage implements OnInit {
 
   constructor(private iab: InAppBrowser,
     public actionSheetController: ActionSheetController,
-    private storage: Storage) { }
+    private storage: Storage,
+    private socialSharing: SocialSharing) { }
 
   ngOnInit() {
   }
@@ -32,7 +34,25 @@ export class NoticiaPage implements OnInit {
           text: 'Share',
           icon: 'share',
           handler: () => {
-            console.log('Share clicked');
+            this.socialSharing.share(this.new.url);
+          }
+        }, {
+          text: 'Share on Facebook',
+          icon: 'logo-facebook',
+          handler: () => {
+            this.socialSharing.shareViaFacebook(this.new.title, this.new.url);
+          }
+        }, {
+          text: 'Share on Twitter',
+          icon: 'logo-twitter',
+          handler: () => {
+            this.socialSharing.shareViaTwitter(this.new.title, this.new.url);
+          }
+        }, {
+          text: 'Share on Whatsapp',
+          icon: 'logo-whatsapp',
+          handler: () => {
+            this.socialSharing.shareViaWhatsApp(this.new.title, this.new.url);
           }
         }, {
           text: 'Favorite',
@@ -55,7 +75,7 @@ export class NoticiaPage implements OnInit {
 
   addToFav(noticia: Article) {
     this.storage.length().then((keysLength: Number) => {
-      this.storage.set('new-'+keysLength, noticia);
+      this.storage.set('new-' + keysLength, noticia);
     });
   }
 }
