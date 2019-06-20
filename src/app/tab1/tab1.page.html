@@ -10,21 +10,7 @@
   <ion-grid>
     <ion-row>
       <ion-col size-xs="12" size-sm="6" size-md="4" size-lg="3" *ngFor="let new of respuestaTopHeadlines.articles">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-subtitle>{{new.source.name}}
-              <div class="more">
-                <ion-button fill="clear" (click)="presentShareActionSheet()">
-                  <ion-icon name="more"></ion-icon>
-                </ion-button>
-              </div>
-            </ion-card-subtitle>
-            <ion-card-title>{{new.title}}</ion-card-title>
-            <ion-img [src]="new.urlToImage"></ion-img>
-          </ion-card-header>
-          <ion-card-content>{{new.description}}
-          </ion-card-content>
-        </ion-card>
+        <app-noticia [new]="new"></app-noticia>
       </ion-col>
     </ion-row>
   </ion-grid>
