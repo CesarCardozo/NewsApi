@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NewsApiService } from '../services/news-api.service';
 import { RespuestaTopHeadlines } from '../services/news-api.service';
-import { ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -19,5 +18,6 @@ export class Tab1Page {
     this._ds.loadNews().subscribe(data => {
       this.respuestaTopHeadlines = data;
     })
+    
   }
 }

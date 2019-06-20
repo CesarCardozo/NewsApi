@@ -13,11 +13,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { NoticiaPageModule } from './noticia/noticia.module';
 import { NoticiaPage } from './noticia/noticia.page';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { IonicStorageModule } from '@ionic/storage';
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [NoticiaPage],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, NoticiaPageModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, NoticiaPageModule, IonicStorageModule.forRoot()],
   providers: [
     StatusBar,
     SplashScreen,
